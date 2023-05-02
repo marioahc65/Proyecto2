@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Proyecto2UI.Models.LibroStock>
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <h4>Reservar Libro</h4>
+</p>
+
+<div class="alert alert-dark" role="alert">
+    @TempData["Message"]
+</div>
+
+@using (Html.BeginForm("Edit", "LibroStock", FormMethod.Post))
+{
+
+    <div class="card-body">
+
+        <div class="mb-2">
+            <label class="form-label">Ingresar Codigo del Cliente para Reservar</label>
+            <input type="text" class="form-control form-control-sm" required name="ClienteId" />
+        </div>
+
+        <hr />
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LibroStockId)
+                </th>
+                <th>
+                    @Html.DisplayName("Nombre del Libro")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaIngreso)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LibroStockId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Libro.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaIngreso)
+                    </td>
+                    <td>
+                        <button type="submit" asp-route-Id="@item.LibroStockId" class="btn btn-primary btn-sm" onclick="Confirmar(event)">Reservar Libro</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Index" asp-controller="Home" asp-action="Index" class="btn btn-danger" style="margin-top:5px">Cancelar</a>
+
+}
+
+<script language="JavaScript">
+
+    function Confirmar(e) {
+        var mensaje = "Estas seguro que desea reservar este libro?";
+
+        if (!confirm(mensaje)) {
+            e.preventDefault();
+        }
+    }
+
+</script>
+
+

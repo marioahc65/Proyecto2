@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Cliente</h1>
+</div>
+<div class="alert alert-dark" role="alert">
+    @TempData["Message"]
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Solicitud de retiro
+    </div>
+    <div class="card-body">
+        <form asp-action="Edit" asp-controller="LibroRetirado" method="get">
+            <div class="mb-2">
+                <label class="form-label">Ingresar Codigo del CLiente</label>
+                <input type="text" class="form-control form-control-sm" required name="ClienteId" />
+            </div>
+            <button type="submit" class="btn btn-success btn-sm">Validar Cliente</button>
+            <a asp-action="Index" asp-controller="Home" asp-action="Index" class="btn btn-danger " style="margin-top:5px">Cancelar</a>
+
+        </form>
+
+        <hr />
+    </div>
+</div>

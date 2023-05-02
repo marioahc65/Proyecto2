@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido al sistema</h1>
+    <div class="container">
+        <div class="row" style="margin-top: 5rem">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("Edit", "LibroStock") + "'");">Reservar Libro</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("Index", "LibroRetirado") + "'");">Solicitud de Retiro</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("ListadoReportes", "Home") + "'");">Reportes y listados</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Proyecto2UI.Models.Cliente>
+
+@{
+    ViewData["Title"] = "ListaStock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Lista de libros en Stock</h1>
+
+
+
+@foreach( var item in Model)
+{
+    <dt class="col-sm-2">
+        @Html.DisplayName("Nombre del Cliente")
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => item.Nombre)
+    </dd>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName("Libro Id")
+                </th>
+                <th>
+                    @Html.DisplayName("Nombre")
+                </th>
+                <th>
+                    @Html.DisplayName("Descripcion")
+                </th>
+                <th>
+                    @Html.DisplayName("Precio")
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+@foreach (var item2 in item.LibroStocks)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item2.LibroId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item2.Libro.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item2.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item2.Precio)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+}

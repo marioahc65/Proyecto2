@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Proyecto2UI.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Lista de Todos los clientes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h1>Multi Libros</h1>
+
+<h4>Lista de Todos los clientes</h4>
+
+<p>
+    <a class="btn btn-info" asp-action="Create">Agregar Cliente</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClienteCedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaNacimiento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClienteCedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Index" asp-controller="Home" asp-action="Index" class="btn btn-danger " style="margin-top:5px">Cancelar</a>
+

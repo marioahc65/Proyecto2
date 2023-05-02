@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Reportes y Listas";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Reportes y Listas</h1>
+    <div class="container">
+        <div class="row" style="margin-top: 5rem">
+            <div class="col">
+                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("Index", "Cliente") + "'");">Mostrar todos los clientes</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("ListaStock", "Cliente") + "'");">Mostrar libros en stock por Cliente</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("PrintStock", "Report") + "'");">Reporte de articulos en stock</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-lg btn-block" onclick="@("window.location.href='" + @Url.Action("Index", "Report") + "'");">Reporte de Retiros</button>
+            </div>
+        </div>
+        <a asp-action="Index" asp-controller="Home" asp-action="Index" class="btn btn-danger " style="margin-top:5px">Cancelar</a>
+
+    </div>
+</div>

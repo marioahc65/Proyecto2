@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Proyecto2UI.Models.LibroStock>
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <h4>Retirar Libro</h4>
+</p>
+
+<div class="alert alert-dark" role="alert">
+    @TempData["Message"]
+</div>
+
+@using (Html.BeginForm("Edit", "LibroRetirado", FormMethod.Post))
+{
+    <input asp-for="@Model.FirstOrDefault().ClienteId" type="hidden" />
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LibroStockId)
+                </th>
+                <th>
+                    @Html.DisplayName("Nombre del Libro")
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaIngreso)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LibroStockId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Libro.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaIngreso)
+                    </td>
+                    <td>
+                        <button type="submit" asp-route-Id="@item.LibroStockId" class="btn btn-warning btn-sm" onclick="Confirmar(event)">Retirar Libro</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Index" asp-controller="Home" asp-action="Index" class="btn btn-danger" style="margin-top:5px">Cancelar</a>
+
+}
+
+<script language="JavaScript">
+
+    function Confirmar(e) {
+        var mensaje = "Estas seguro que desea retirar este libro?";
+
+        if (!confirm(mensaje)) {
+            e.preventDefault();
+        }
+    }
+
+</script>

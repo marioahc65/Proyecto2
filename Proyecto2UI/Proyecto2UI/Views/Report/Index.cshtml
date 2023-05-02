@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "CheckPaciente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ingresar Fechas</h1>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        Historial de Retiros
+    </div>
+    <div class="card-body">
+        <form asp-action="Retirados" asp-controller="Report" method="get">
+            <div class="mb-2">
+                <label class="form-label">Ingresar Fecha de Inicio de Consulta</label>
+                <input type="date" class="form-control form-control-sm" required name="FechaInicio" />
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Ingresar Fecha de Fin de Consulta</label>
+                <input type="date" class="form-control form-control-sm" required name="FechaFin" />
+            </div>
+            <button type="submit" class="btn btn-success btn-sm">Consultar Retiros</button>
+        </form>
+        <hr />
+    </div>
+</div>
+
